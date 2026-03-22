@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: owner/repo
+  branch: main
+  base_url: https://your-auth-service.example.com
+
+site_url: https://your-site.example.com
+media_folder: /public/uploads
+public_folder: /uploads
+
+collections:
+  - name: writing
+    label: Writing
+    folder: /content/writing
+    create: true
+    slug: "{{fields.slug}}"
+    preview_path: /writing/{{slug}}
+    summary: "{{fields.title}} - {{fields.date}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, type: date, format: YYYY-MM-DD }
+      - { label: Slug, name: slug, widget: string }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Draft, name: draft, widget: boolean, default: false, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: bookshelf
+    label: Bookshelf
+    folder: /content/bookshelf
+    create: true
+    slug: "{{fields.slug}}"
+    preview_path: /bookshelf/{{slug}}
+    summary: "{{fields.title}} - {{fields.status}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Author, name: author, widget: string }
+      - { label: Year, name: year, widget: number, value_type: int, min: 0 }
+      - { label: Slug, name: slug, widget: string }
+      - label: Status
+        name: status
+        widget: select
+        options: [to-read, reading, finished, paused]
+        default: to-read
+      - { label: Started at, name: startedAt, widget: datetime, type: date, format: YYYY-MM-DD, required: false }
+      - { label: Finished at, name: finishedAt, widget: datetime, type: date, format: YYYY-MM-DD, required: false }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Cover image, name: coverImage, widget: image, required: false }
+      - { label: Draft, name: draft, widget: boolean, default: false, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: notes
+    label: Notes
+    folder: /content/notes
+    create: true
+    slug: "{{fields.slug}}"
+    preview_path: /notes/{{slug}}
+    summary: "{{fields.title}} - {{fields.kind}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, type: date, format: YYYY-MM-DD }
+      - { label: Slug, name: slug, widget: string }
+      - { label: Kind, name: kind, widget: string, default: Note }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Pinned, name: pinned, widget: boolean, default: false, required: false }
+      - { label: Draft, name: draft, widget: boolean, default: false, required: false }
+      - { label: Body, name: body, widget: markdown }
