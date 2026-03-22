@@ -36,3 +36,6 @@ pnpm-debug.log*
 next-env.d.ts
 pnpm-lock.yaml
 CLAUDE.md
+package.json
+skills-lock.json
+.agents/skills/agentation/SKILL.md

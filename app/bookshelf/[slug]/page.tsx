@@ -4,6 +4,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 
 import { Markdown } from "@/components/site/markdown"
+import { SiteFooter } from "@/components/site/site-footer"
 import {
   formatDisplayDate,
   getBook,
@@ -50,7 +51,7 @@ export default async function BookDetailPage({
 
   return (
     <div className="grid min-h-screen border-line lg:grid-cols-[minmax(16rem,0.5fr)_minmax(0,1fr)] lg:border-l">
-      <aside className="border-line px-6 py-12 sm:px-10 lg:border-r lg:px-10 lg:py-16">
+      <aside className="flex min-h-screen flex-col border-line px-6 py-12 sm:px-10 lg:border-r lg:px-10 lg:py-16">
         <p className="meta-text text-muted-ink">Bookshelf</p>
         <Link
           href="/bookshelf"
@@ -85,6 +86,7 @@ export default async function BookDetailPage({
             </Link>
           ))}
         </div>
+        <SiteFooter className="mt-auto pt-16" />
       </aside>
 
       <article className="px-6 py-12 sm:px-10 lg:px-16 lg:py-16">

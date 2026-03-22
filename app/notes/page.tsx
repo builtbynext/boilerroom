@@ -1,5 +1,6 @@
 import Link from "next/link"
 
+import { SiteFooter } from "@/components/site/site-footer"
 import { formatDisplayDate, getNotes } from "@/lib/content"
 
 export default async function NotesPage() {
@@ -9,7 +10,7 @@ export default async function NotesPage() {
 
   return (
     <div className="grid min-h-screen border-line lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:border-l">
-      <section className="border-line px-6 py-12 sm:px-10  lg:px-14 lg:py-16"> 
+      <section className="flex min-h-screen flex-col border-line px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
         <h1 className="mt-5 font-serif text-5xl leading-none tracking-[-0.04em] text-ink sm:text-7xl">
           Notes
         </h1>
@@ -38,49 +39,8 @@ export default async function NotesPage() {
             <p className="text-base leading-8 text-muted-ink">No posts now</p>
           )}
         </div>
+        <SiteFooter className="mt-auto pt-16" />
       </section>
-
-      {/* <section className="px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
-        {featured ? (
-          <div className="max-w-3xl">
-            <p className="meta-text text-muted-ink">
-              {formatDisplayDate(featured.date)}
-            </p>
-            <h2 className="mt-4 font-serif text-5xl leading-none tracking-[-0.04em] text-ink sm:text-6xl">
-              {featured.title}
-            </h2>
-            <p className="mt-8 border-l-2 border-accent/20 pl-6 text-xl leading-9 text-muted-ink">
-              {featured.excerpt}
-            </p>
-
-            <div className="mt-10 rounded-[1.8rem] border border-line bg-white/38 p-6">
-              <p className="meta-text text-muted-ink">Kinds in this archive</p>
-              <div className="mt-4 flex flex-wrap gap-3">
-                {groupedKinds.map((kind) => (
-                  <span
-                    key={kind}
-                    className="rounded-full border border-line bg-white/65 px-4 py-2 text-sm text-muted-ink"
-                  >
-                    {kind}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-10 space-y-6 text-lg leading-9 text-ink">
-              <p>
-                Notes is the loosest section of the site by design. It can hold
-                categories, monthly link bundles, rough lists, or a single
-                sentence that might become useful later.
-              </p>
-              <p>
-                The point is not polish. It is retrieval. If a thought matters
-                enough to keep, it deserves a place that is easy to return to.
-              </p>
-            </div>
-          </div>
-        ) : null}
-      </section> */}
     </div>
   )
 }

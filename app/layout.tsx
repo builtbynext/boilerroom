@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 
 import "./globals.css"
+import { Agentation } from "agentation"
 import { SiteShell } from "@/components/site/site-shell"
-import { getLatestChangelogEntry } from "@/lib/content"
 
 export const metadata: Metadata = {
   title: {
@@ -18,14 +18,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const latestChangelogPromise = getLatestChangelogEntry()
-
   return (
     <html lang="en">
       <body>
-        <SiteShell latestChangelogPromise={latestChangelogPromise}>
-          {children}
-        </SiteShell>
+        <SiteShell>{children}</SiteShell>
+        {process.env.NODE_ENV === "development" && <Agentation />}
       </body>
     </html>
   )

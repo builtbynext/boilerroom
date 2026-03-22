@@ -1,5 +1,6 @@
 import Link from "next/link"
 
+import { SiteFooter } from "@/components/site/site-footer"
 import { formatDisplayDate, getWritingEntries } from "@/lib/content"
 
 export default async function WritingPage() {
@@ -7,7 +8,7 @@ export default async function WritingPage() {
 
   return (
     <div className="grid min-h-screen border-line lg:grid-cols-[minmax(0,0.96fr)_minmax(0,1.12fr)] lg:border-l">
-      <section className="border-line px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
+      <section className="flex min-h-screen flex-col border-line px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
         <h1 className="mt-5 font-serif text-5xl leading-none tracking-[-0.04em] text-ink sm:text-7xl">
           Writing
         </h1>
@@ -32,6 +33,7 @@ export default async function WritingPage() {
             </article>
           ))}
         </div>
+        <SiteFooter className="mt-auto pt-16" />
       </section>
 
       {/* <section className="px-6 py-12 sm:px-10 lg:px-14 lg:py-16">

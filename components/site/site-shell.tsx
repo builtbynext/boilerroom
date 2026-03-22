@@ -3,10 +3,9 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
-import { use, useState } from "react"
+import { useState } from "react"
 
 import { cn } from "@/lib/utils"
-import type { ChangelogEntry } from "@/lib/content"
 
 const navItems = [
   {
@@ -68,16 +67,9 @@ function NavLink({
   )
 }
 
-export function SiteShell({
-  children,
-  latestChangelogPromise,
-}: {
-  children: React.ReactNode
-  latestChangelogPromise: Promise<ChangelogEntry | undefined>
-}) {
+export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const latestChangelog = use(latestChangelogPromise)
 
   if (pathname.startsWith("/admin")) {
     return <>{children}</>
@@ -163,16 +155,6 @@ export function SiteShell({
 
       <main className="min-h-screen lg:pl-72">
         <div className="mx-auto max-w-[110rem]">{children}</div>
-        {latestChangelog ? (
-          <div className="mx-auto max-w-[110rem] border-t border-line px-8 py-6">
-            <span className="meta-text text-muted-ink">
-              © BoilerRoom 2026 {latestChangelog.title}{" "}
-              <Link href="/changelog" className="text-accent hover:text-ink">
-                Changelog
-              </Link>
-            </span>
-          </div>
-        ) : null}
       </main>
     </div>
   )

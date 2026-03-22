@@ -8,14 +8,12 @@ export default async function ChangelogPage() {
 
   return (
     <div className="grid min-h-screen border-line lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:border-l">
-      <section className="border-line px-6 py-12 sm:px-10 lg:border-r lg:px-14 lg:py-16">
-        <p className="meta-text text-muted-ink">Changelog</p>
+      <section className="border-line px-6 py-12 sm:px-10 lg:border-r lg:px-14 lg:py-16"> 
         <h1 className="mt-5 font-serif text-5xl leading-none tracking-[-0.04em] text-ink sm:text-7xl">
-          What changed and why.
+          Changelog
         </h1>
         <p className="mt-6 max-w-xl text-lg leading-8 text-muted-ink">
-          A running log of minor and major releases, design shifts, new sections, and anything
-          else worth marking.
+          Ongoing updates and improvements to Boiler Room.
         </p>
 
         <div className="mt-14 space-y-7">

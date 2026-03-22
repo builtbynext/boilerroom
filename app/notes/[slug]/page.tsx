@@ -3,6 +3,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 
 import { Markdown } from "@/components/site/markdown"
+import { SiteFooter } from "@/components/site/site-footer"
 import {
   formatDisplayDate,
   getNote,
@@ -49,7 +50,7 @@ export default async function NoteDetailPage({
 
   return (
     <div className="grid min-h-screen border-line lg:grid-cols-[minmax(16rem,0.5fr)_minmax(0,1fr)] lg:border-l">
-      <aside className="border-line px-6 py-12 sm:px-10 lg:border-r lg:px-10 lg:py-16">
+      <aside className="flex min-h-screen flex-col border-line px-6 py-12 sm:px-10 lg:border-r lg:px-10 lg:py-16">
         <p className="meta-text text-muted-ink">Notes</p>
         <Link
           href="/notes"
@@ -67,32 +68,30 @@ export default async function NoteDetailPage({
               className="group block"
             >
               <p className="meta-text text-muted-ink">
-                {formatDisplayDate(item.date)} · {item.kind}
+                {formatDisplayDate(item.date)}
               </p>
               <h2
-                className={`mt-2 text-xl leading-tight tracking-[-0.03em] ${
-                  item.slug === note.slug
+                className={`mt-2 text-xl leading-tight tracking-[-0.03em] ${item.slug === note.slug
                     ? "text-accent"
                     : "text-ink group-hover:text-accent"
-                }`}
+                  }`}
               >
+                {item.pinned ? "📌 " : ""}
                 {item.title}
               </h2>
             </Link>
           ))}
         </div>
+        <SiteFooter className="mt-auto pt-16" />
       </aside>
 
       <article className="px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
         <div className="max-w-4xl">
           <p className="meta-text text-muted-ink">
-            {formatDisplayDate(note.date)} · {note.kind}
+            {formatDisplayDate(note.date)}
           </p>
-          <h1 className="mt-5 font-serif text-5xl leading-none tracking-[-0.04em] text-ink sm:text-7xl">
+          <p className="mt-5 font-serif leading-none tracking-[-0.04em] text-ink text-4xl">
             {note.title}
-          </h1>
-          <p className="mt-8 max-w-3xl border-l-2 border-accent/20 pl-6 text-xl leading-9 text-muted-ink">
-            {note.excerpt}
           </p>
           <div className="mt-12 max-w-3xl">
             <Markdown html={html} />
