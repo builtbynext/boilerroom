@@ -1,0 +1,92 @@
+import type { Metadata } from "next"
+import Link from "next/link"
+import { notFound } from "next/navigation"
+
+import { Markdown } from "@/components/site/markdown"
+import {
+  formatDisplayDate,
+  getChangelogEntries,
+  getChangelogEntry,
+  renderMarkdown,
+} from "@/lib/content"
+
+export async function generateStaticParams() {
+  const entries = await getChangelogEntries()
+  return entries.map((entry) => ({ slug: entry.slug }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const entry = await getChangelogEntry(slug)
+
+  if (!entry) {
+    return {}
+  }
+
+  return {
+    title: `${entry.title} changelog`,
+    description: entry.excerpt,
+  }
+}
+
+export default async function ChangelogDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  const [entry, allEntries] = await Promise.all([getChangelogEntry(slug), getChangelogEntries()])
+
+  if (!entry) {
+    notFound()
+  }
+
+  const html = await renderMarkdown(entry.body)
+
+  return (
+    <div className="grid min-h-screen border-line lg:grid-cols-[minmax(16rem,0.5fr)_minmax(0,1fr)] lg:border-l">
+      <aside className="border-line px-6 py-12 sm:px-10 lg:border-r lg:px-10 lg:py-16">
+        <p className="meta-text text-muted-ink">Changelog</p>
+        <Link href="/changelog" className="meta-text mt-6 inline-flex items-center gap-2 text-accent">
+          <span aria-hidden="true">←</span>
+          Back to changelog
+        </Link>
+
+        <div className="mt-12 space-y-6">
+          {allEntries.map((item) => (
+            <Link key={item.slug} href={`/changelog/${item.slug}`} className="block group">
+              <p className="meta-text text-muted-ink">{formatDisplayDate(item.date)}</p>
+              <h2
+                className={`mt-2 text-xl leading-tight tracking-[-0.03em] ${
+                  item.slug === entry.slug ? "text-accent" : "text-ink group-hover:text-accent"
+                }`}
+              >
+                {item.title}
+              </h2>
+              <p className="mt-2 text-sm leading-7 text-muted-ink">{item.excerpt}</p>
+            </Link>
+          ))}
+        </div>
+      </aside>
+
+      <article className="px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
+        <div className="max-w-4xl">
+          <p className="meta-text text-muted-ink">{formatDisplayDate(entry.date)}</p>
+          <h1 className="mt-5 font-serif text-5xl leading-none tracking-[-0.04em] text-ink sm:text-7xl">
+            {entry.title}
+          </h1>
+          <p className="mt-8 max-w-3xl border-l-2 border-accent/20 pl-6 text-xl leading-9 text-muted-ink">
+            {entry.excerpt}
+          </p>
+          <div className="mt-12 max-w-3xl">
+            <Markdown html={html} />
+          </div>
+        </div>
+      </article>
+    </div>
+  )
+}

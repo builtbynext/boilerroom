@@ -9,43 +9,38 @@ export default async function NotesPage() {
 
   return (
     <div className="grid min-h-screen border-line lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:border-l">
-      <section className="border-line px-6 py-12 sm:px-10 lg:border-r lg:px-14 lg:py-16">
-        <p className="meta-text text-muted-ink">Notes</p>
+      <section className="border-line px-6 py-12 sm:px-10  lg:px-14 lg:py-16"> 
         <h1 className="mt-5 font-serif text-5xl leading-none tracking-[-0.04em] text-ink sm:text-7xl">
-          Slow musings, hurried scribblings.
+          Notes
         </h1>
         <p className="mt-6 max-w-xl text-lg leading-8 text-muted-ink">
-          A place for link bundles, fragments, private working memory, and the
-          small things that do not need the weight of an essay.
+          For things that are not yet fully formed.
         </p>
 
         <div className="mt-14 space-y-7">
-          {notes.map((note) => (
-            <article key={note.slug} className="group">
-              <Link href={`/notes/${note.slug}`} className="block space-y-2">
-                <div className="flex items-center gap-3">
-                  <span className="meta-text text-accent">
-                    {note.pinned ? "!" : "&gt;"}
-                  </span>
-                  <h2 className="text-2xl leading-tight tracking-[-0.03em] text-ink transition-colors group-hover:text-accent">
-                    {note.title}
-                  </h2>
-                </div>
-                <div className="pl-7">
+          {notes.length > 0 ? (
+            notes.map((note) => (
+              <article key={note.slug} className="group">
+                <Link href={`/notes/${note.slug}`} className="block space-y-2">
+                  <div className="flex items-center">
+                    <h2 className="text-2xl leading-tight tracking-[-0.03em] text-ink transition-colors group-hover:text-accent">
+                      {note.pinned ? "📌 " : ""}
+                      {note.title}
+                    </h2>
+                  </div>
                   <p className="meta-text text-muted-ink">
-                    {formatDisplayDate(note.date)} · {note.kind}
+                    {formatDisplayDate(note.date)}
                   </p>
-                  <p className="mt-2 text-base leading-7 text-muted-ink">
-                    {note.excerpt}
-                  </p>
-                </div>
-              </Link>
-            </article>
-          ))}
+                </Link>
+              </article>
+            ))
+          ) : (
+            <p className="text-base leading-8 text-muted-ink">No posts now</p>
+          )}
         </div>
       </section>
 
-      <section className="px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
+      {/* <section className="px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
         {featured ? (
           <div className="max-w-3xl">
             <p className="meta-text text-muted-ink">
@@ -85,7 +80,7 @@ export default async function NotesPage() {
             </div>
           </div>
         ) : null}
-      </section>
+      </section> */}
     </div>
   )
 }

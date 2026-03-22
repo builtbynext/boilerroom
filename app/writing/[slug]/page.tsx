@@ -62,7 +62,7 @@ export default async function WritingDetailPage({
           className="meta-text mt-6 inline-flex items-center gap-2 text-accent"
         >
           <span aria-hidden="true">←</span>
-          Back to archive
+          Back to previous
         </Link>
 
         <div className="mt-12 space-y-6">

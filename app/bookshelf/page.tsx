@@ -41,22 +41,23 @@ export default async function BookshelfPage({
 
   return (
     <div className="grid min-h-screen border-line lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] lg:border-l">
-      <section className="border-line px-6 py-12 sm:px-10 lg:border-r lg:px-14 lg:py-16">
-        <p className="meta-text text-muted-ink">Bookshelf</p>
+      <section className="border-line px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
         <h1 className="mt-5 font-serif text-5xl leading-none tracking-[-0.04em] text-ink sm:text-7xl">
-          Books read, in progress, and waiting their turn.
+          Bookshelf
         </h1>
+        <p className="mt-6 max-w-xl text-lg leading-8 text-muted-ink">
+          Highlights and ideas for progress
+        </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
           {filters.map((filter) => (
             <Link
               key={filter.href}
               href={filter.href}
-              className={`rounded-full border px-4 py-2 text-sm transition-colors ${
-                filter.active
+              className={`rounded-full border px-4 py-2 text-sm transition-colors ${filter.active
                   ? "border-accent bg-accent text-white"
                   : "border-line bg-white/45 text-muted-ink hover:text-ink"
-              }`}
+                }`}
             >
               {filter.label}
             </Link>
@@ -74,20 +75,14 @@ export default async function BookshelfPage({
                     href={`/bookshelf/${book.slug}`}
                     className="group block"
                   >
-                    <div className="flex items-start gap-3">
-                      <span className="meta-text pt-1 text-accent">
-                        {index === 0 ? "&gt;" : "·"}
-                      </span>
+                    <div className="flex items-start gap-3"> 
                       <div>
                         <h2 className="text-2xl leading-tight tracking-[-0.03em] text-ink transition-colors group-hover:text-accent">
                           {book.title}
                         </h2>
                         <p className="mt-2 text-base leading-7 text-muted-ink">
                           {book.author}, {book.year}
-                        </p>
-                        <p className="mt-2 text-sm leading-7 text-muted-ink">
-                          {book.excerpt}
-                        </p>
+                        </p> 
                       </div>
                     </div>
                   </Link>
@@ -98,7 +93,7 @@ export default async function BookshelfPage({
         </div>
       </section>
 
-      <section className="px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
+      {/* <section className="px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
         {featured ? (
           <div className="max-w-3xl">
             <p className="meta-text text-muted-ink">
@@ -107,8 +102,8 @@ export default async function BookshelfPage({
                 : "Recently shelved"}{" "}
               {formatDisplayDate(
                 featured.startedAt ??
-                  featured.finishedAt ??
-                  `${featured.year}-01-01`
+                featured.finishedAt ??
+                `${featured.year}-01-01`
               )}
             </p>
             <h2 className="mt-4 font-serif text-5xl leading-none tracking-[-0.04em] text-ink sm:text-6xl">
@@ -141,7 +136,7 @@ export default async function BookshelfPage({
             </Link>
           </div>
         ) : null}
-      </section>
+      </section> */}
     </div>
   )
 }

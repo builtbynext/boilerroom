@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 
 import "./globals.css"
 import { SiteShell } from "@/components/site/site-shell"
+import { getLatestChangelogEntry } from "@/lib/content"
 
 export const metadata: Metadata = {
   title: {
@@ -17,10 +18,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const latestChangelogPromise = getLatestChangelogEntry()
+
   return (
     <html lang="en">
       <body>
-        <SiteShell>{children}</SiteShell>
+        <SiteShell latestChangelogPromise={latestChangelogPromise}>
+          {children}
+        </SiteShell>
       </body>
     </html>
   )

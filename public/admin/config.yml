@@ -22,6 +22,7 @@ collections:
       - { label: Date, name: date, widget: datetime, type: date, format: YYYY-MM-DD }
       - { label: Slug, name: slug, widget: string }
       - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Pinned, name: pinned, widget: boolean, default: false, required: false }
       - { label: Draft, name: draft, widget: boolean, default: false, required: false }
       - { label: Body, name: body, widget: markdown }
 
@@ -46,6 +47,22 @@ collections:
       - { label: Finished at, name: finishedAt, widget: datetime, type: date, format: YYYY-MM-DD, required: false }
       - { label: Excerpt, name: excerpt, widget: text }
       - { label: Cover image, name: coverImage, widget: image, required: false }
+      - { label: Draft, name: draft, widget: boolean, default: false, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: changelog
+    label: Changelog
+    folder: /content/changelog
+    create: true
+    slug: "{{fields.slug}}"
+    preview_path: /changelog/{{slug}}
+    summary: "{{fields.title}} - {{fields.date}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, type: date, format: YYYY-MM-DD }
+      - { label: Slug, name: slug, widget: string }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Pinned, name: pinned, widget: boolean, default: false, required: false }
       - { label: Draft, name: draft, widget: boolean, default: false, required: false }
       - { label: Body, name: body, widget: markdown }
 

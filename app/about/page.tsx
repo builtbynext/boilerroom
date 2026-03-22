@@ -3,16 +3,17 @@ export default function AboutPage() {
     <div className="grid min-h-screen border-line lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:border-l">
       <section className="border-line px-6 py-12 sm:px-10 lg:border-r lg:px-14 lg:py-16">
         <div className="editorial-prose max-w-2xl">
-          <strong> Boiler Room</strong>
+          <h1 className="text-4xl">Stewart Huang</h1>
           <p>
-            A third space I wanted that could hold my essays, book highlights and smaller fragments from my indie projects.
-          </p> 
-          <p>
-            The overall goal is durability. If I come back after a month with one essay, one book note, 
-            and three loose observations, the boiler room should still feel like a place I want to be while still feeling coherent.
+            1. <a href="https://buildandlevel.club" target="_blank">Indie builder</a> and DJ based in Singapore. 
+          </p>
+        <p>
+            2. Founding Design Engineer at <a href="https://newstandard.design">New Standard</a> building custom websites for teams who value craft.
           </p>
           <p>
-            See also: <a href="https://x.com/builtbynext">Twitter</a>  Curius  <a href="https://github.com/builtbynext">GitHub</a>
+            See also: <a href="https://x.com/builtbynext">Twitter</a>,{" "}
+            <a href="https://curius.app/"> Curius </a>,{" "}    
+            <a href="https://github.com/builtbynext">GitHub</a>
           </p>
         </div>
       </section>

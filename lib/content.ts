@@ -7,7 +7,7 @@ import html from "remark-html"
 
 const CONTENT_ROOT = path.join(process.cwd(), "content")
 
-export type CollectionName = "writing" | "bookshelf" | "notes"
+export type CollectionName = "writing" | "bookshelf" | "notes" | "changelog"
 export type BookStatus = "to-read" | "reading" | "finished" | "paused"
 
 export type WritingEntry = {
@@ -16,6 +16,7 @@ export type WritingEntry = {
   date: string
   slug: string
   excerpt: string
+  pinned: boolean
   draft: boolean
   body: string
 }
@@ -141,7 +142,7 @@ function getBookStatus(data: FrontmatterRecord): BookStatus {
 }
 
 function isPublished<T extends { draft: boolean }>(entry: T) {
-  return process.env.NODE_ENV !== "production" || !entry.draft
+  return !entry.draft
 }
 
 function sortByDateDesc<T extends { date?: string }>(items: T[]) {
@@ -149,6 +150,18 @@ function sortByDateDesc<T extends { date?: string }>(items: T[]) {
     const rightTime = right.date ? new Date(right.date).getTime() : 0
     const leftTime = left.date ? new Date(left.date).getTime() : 0
     return rightTime - leftTime
+  })
+}
+
+function sortPinnedFirst<T extends { pinned?: boolean; date?: string }>(items: T[]) {
+  return [...items].sort((left, right) => {
+    if (left.pinned === right.pinned) {
+      const rightTime = right.date ? new Date(right.date).getTime() : 0
+      const leftTime = left.date ? new Date(left.date).getTime() : 0
+      return rightTime - leftTime
+    }
+
+    return left.pinned ? -1 : 1
   })
 }
 
@@ -198,6 +211,7 @@ export async function getWritingEntries() {
         date: getDateString(data, "date"),
         slug,
         excerpt: getString(data, "excerpt"),
+        pinned: getBoolean(data, "pinned"),
         draft: getBoolean(data, "draft"),
         body: content.trim(),
       }
@@ -206,7 +220,7 @@ export async function getWritingEntries() {
     })
   )
 
-  return sortByDateDesc(entries).filter(isPublished)
+  return sortPinnedFirst(entries).filter(isPublished)
 }
 
 export async function getWritingEntry(slug: string) {
@@ -273,12 +287,59 @@ export async function getNotes() {
     })
   )
 
-  return sortByDateDesc(entries).filter(isPublished)
+  return sortPinnedFirst(entries).filter(isPublished)
 }
 
 export async function getNote(slug: string) {
   const notes = await getNotes()
   return notes.find((entry) => entry.slug === slug)
+}
+
+export type ChangelogEntry = {
+  collection: "changelog"
+  title: string
+  date: string
+  slug: string
+  excerpt: string
+  pinned: boolean
+  draft: boolean
+  body: string
+}
+
+export async function getChangelogEntries() {
+  const files = await readMarkdownFiles("changelog")
+  const entries = await Promise.all(
+    files.map(async (fileName) => {
+      const source = await readFileSource("changelog", fileName)
+      const { data, content } = matter(source)
+      const slug = getString(data, "slug", fileName.replace(/\.md$/, ""))
+
+      const entry: ChangelogEntry = {
+        collection: "changelog",
+        title: getString(data, "title", slug),
+        date: getDateString(data, "date"),
+        slug,
+        excerpt: getString(data, "excerpt"),
+        pinned: getBoolean(data, "pinned"),
+        draft: getBoolean(data, "draft"),
+        body: content.trim(),
+      }
+
+      return entry
+    })
+  )
+
+  return sortPinnedFirst(entries).filter(isPublished)
+}
+
+export async function getChangelogEntry(slug: string) {
+  const entries = await getChangelogEntries()
+  return entries.find((entry) => entry.slug === slug)
+}
+
+export async function getLatestChangelogEntry() {
+  const entries = await getChangelogEntries()
+  return entries[0]
 }
 
 export async function renderMarkdown(source: string) {

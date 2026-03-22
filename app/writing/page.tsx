@@ -4,45 +4,37 @@ import { formatDisplayDate, getWritingEntries } from "@/lib/content"
 
 export default async function WritingPage() {
   const entries = await getWritingEntries()
-  const featured = entries[0]
 
   return (
     <div className="grid min-h-screen border-line lg:grid-cols-[minmax(0,0.96fr)_minmax(0,1.12fr)] lg:border-l">
-      <section className="border-line px-6 py-12 sm:px-10 lg:border-r lg:px-14 lg:py-16">
-        <p className="meta-text text-muted-ink">Writing</p>
+      <section className="border-line px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
         <h1 className="mt-5 font-serif text-5xl leading-none tracking-[-0.04em] text-ink sm:text-7xl">
-          Longer pieces and thoughts.
+          Writing
         </h1>
         <p className="mt-6 max-w-xl text-lg leading-8 text-muted-ink">
-          Essays, experiments, and notes that wanted a little more room than a
-          margin could offer.
+          Longer essays & thoughts.
         </p>
 
         <div className="mt-14 space-y-8">
-          {entries.map((entry, index) => (
+          {entries.map((entry) => (
             <article key={entry.slug} className="group">
               <Link href={`/writing/${entry.slug}`} className="block space-y-2">
-                <div className="flex items-center gap-3">
-                  <span className="meta-text text-accent">
-                    {index === 0 ? "&gt;" : "·"}
-                  </span>
+                <div className="flex items-center"> 
                   <h2 className="text-2xl leading-tight tracking-[-0.03em] text-ink transition-colors group-hover:text-accent">
+                    {entry.pinned ? "📌 " : ""}
                     {entry.title}
                   </h2>
                 </div>
-                <p className="meta-text pl-7 text-muted-ink">
+                <p className="meta-text text-muted-ink">
                   {formatDisplayDate(entry.date)}
-                </p>
-                <p className="pl-7 text-base leading-7 text-muted-ink">
-                  {entry.excerpt}
-                </p>
+                </p> 
               </Link>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
+      {/* <section className="px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
         {featured ? (
           <div className="max-w-3xl">
             <p className="meta-text text-muted-ink">
@@ -76,7 +68,7 @@ export default async function WritingPage() {
             </Link>
           </div>
         ) : null}
-      </section>
+      </section> */}
     </div>
   )
 }

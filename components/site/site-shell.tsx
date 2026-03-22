@@ -3,9 +3,10 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
-import { useState } from "react"
+import { use, useState } from "react"
 
 import { cn } from "@/lib/utils"
+import type { ChangelogEntry } from "@/lib/content"
 
 const navItems = [
   {
@@ -67,9 +68,16 @@ function NavLink({
   )
 }
 
-export function SiteShell({ children }: { children: React.ReactNode }) {
+export function SiteShell({
+  children,
+  latestChangelogPromise,
+}: {
+  children: React.ReactNode
+  latestChangelogPromise: Promise<ChangelogEntry | undefined>
+}) {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const latestChangelog = use(latestChangelogPromise)
 
   if (pathname.startsWith("/admin")) {
     return <>{children}</>
@@ -84,7 +92,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <div className="space-y-2 pt-10">
               <p className="meta-text text-muted-ink">Boiler Room</p>
               <p className="max-w-[10rem] text-sm leading-7 text-muted-ink">
-                A third space for my writing, reading, and mixtapes I want to keep near
+                A third space for my writing, reading notes, and mixtapes I want to keep near
                 at hand.
               </p>
             </div>
@@ -100,7 +108,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
                 /> 
               </div>
             ))}
-          </nav> 
+          </nav>
+
         </div>
       </aside>
 
@@ -138,6 +147,15 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
                   onNavigate={() => setMobileOpen(false)}
                 />
               ))}
+              <div className="pt-2">
+                <Link
+                  href="/changelog"
+                  onClick={() => setMobileOpen(false)}
+                  className="meta-text text-accent"
+                >
+                  Changelog
+                </Link>
+              </div>
             </div>
           </nav>
         ) : null}
@@ -145,6 +163,16 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 
       <main className="min-h-screen lg:pl-72">
         <div className="mx-auto max-w-[110rem]">{children}</div>
+        {latestChangelog ? (
+          <div className="mx-auto max-w-[110rem] border-t border-line px-8 py-6">
+            <span className="meta-text text-muted-ink">
+              © BoilerRoom 2026 {latestChangelog.title}{" "}
+              <Link href="/changelog" className="text-accent hover:text-ink">
+                Changelog
+              </Link>
+            </span>
+          </div>
+        ) : null}
       </main>
     </div>
   )
