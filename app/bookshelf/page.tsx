@@ -66,31 +66,35 @@ export default async function BookshelfPage({
         </div>
 
         <div className="mt-12 space-y-10">
-          {groups.map((group) => (
-            <div key={group.status}>
-              <p className="meta-text text-muted-ink">{group.label}</p>
-              <div className="mt-5 space-y-6">
-                {group.items.map((book, index) => (
-                  <Link
-                    key={book.slug}
-                    href={`/bookshelf/${book.slug}`}
-                    className="group block"
-                  >
-                    <div className="flex items-start gap-3"> 
-                      <div>
-                        <h2 className="text-2xl leading-tight tracking-[-0.03em] text-ink transition-colors group-hover:text-accent">
-                          {book.title}
-                        </h2>
-                        <p className="mt-2 text-base leading-7 text-muted-ink">
-                          {book.author}, {book.year}
-                        </p> 
+          {visibleBooks.length > 0 ? (
+            groups.map((group) => (
+              <div key={group.status}>
+                <p className="meta-text text-muted-ink">{group.label}</p>
+                <div className="mt-5 space-y-6">
+                  {group.items.map((book) => (
+                    <Link
+                      key={book.slug}
+                      href={`/bookshelf/${book.slug}`}
+                      className="group block"
+                    >
+                      <div className="flex items-start gap-3">
+                        <div>
+                          <h2 className="text-2xl leading-tight tracking-[-0.03em] text-ink transition-colors group-hover:text-accent">
+                            {book.title}
+                          </h2>
+                          <p className="mt-2 text-base leading-7 text-muted-ink">
+                            {book.author}, {book.year}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="text-base leading-8 text-muted-ink">No posts now</p>
+          )}
         </div>
         <SiteFooter className="mt-auto pt-16" />
       </section>

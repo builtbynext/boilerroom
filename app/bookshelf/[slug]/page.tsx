@@ -98,9 +98,9 @@ export default async function BookDetailPage({
                 ? `Started ${formatDisplayDate(book.startedAt)}`
                 : book.status.replace("-", " ")}
           </p>
-          <h1 className="mt-5 font-serif text-5xl leading-none tracking-[-0.04em] text-ink sm:text-7xl">
+          <p className="mt-5 font-serif text-4xl leading-none tracking-[-0.04em] text-ink">
             {book.title}
-          </h1>
+          </p>
           <p className="mt-4 text-xl leading-8 text-muted-ink">
             {book.author}, {book.year}
           </p>
@@ -116,10 +116,6 @@ export default async function BookDetailPage({
               />
             </div>
           ) : null}
-
-          <p className="mt-8 max-w-3xl border-l-2 border-accent/20 pl-6 text-xl leading-9 text-muted-ink">
-            {book.excerpt}
-          </p>
 
           <div className="mt-12 max-w-3xl">
             <Markdown html={html} />

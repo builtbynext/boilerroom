@@ -50,9 +50,6 @@ export default async function WritingDetailPage({
   }
 
   const html = await renderMarkdown(entry.body)
-  const relatedEntries = allEntries
-    .filter((candidate) => candidate.slug !== entry.slug)
-    .slice(0, 4)
 
   return (
     <div className="grid min-h-screen border-line lg:grid-cols-[minmax(16rem,0.5fr)_minmax(0,1fr)] lg:border-l">
@@ -96,41 +93,12 @@ export default async function WritingDetailPage({
           <p className="meta-text text-muted-ink">
             {formatDisplayDate(entry.date)}
           </p>
-          <h1 className="mt-5 font-serif text-5xl leading-none tracking-[-0.04em] text-ink sm:text-7xl">
+          <p className="mt-5 font-serif text-4xl leading-none tracking-[-0.04em] text-ink">
             {entry.title}
-          </h1>
-          <p className="mt-8 max-w-3xl border-l-2 border-accent/20 pl-6 text-xl leading-9 text-muted-ink">
-            {entry.excerpt}
           </p>
-
           <div className="mt-12 max-w-3xl">
             <Markdown html={html} />
           </div>
-
-          {relatedEntries.length > 0 ? (
-            <div className="mt-16 border-t border-line pt-10">
-              <p className="meta-text text-muted-ink">Nearby entries</p>
-              <div className="mt-6 grid gap-5 md:grid-cols-2">
-                {relatedEntries.map((item) => (
-                  <Link
-                    key={item.slug}
-                    href={`/writing/${item.slug}`}
-                    className="rounded-[1.6rem] border border-line bg-white/35 p-5 transition-transform hover:-translate-y-0.5"
-                  >
-                    <p className="meta-text text-muted-ink">
-                      {formatDisplayDate(item.date)}
-                    </p>
-                    <h2 className="mt-3 text-2xl leading-tight tracking-[-0.03em] text-ink">
-                      {item.title}
-                    </h2>
-                    <p className="mt-3 text-sm leading-7 text-muted-ink">
-                      {item.excerpt}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ) : null}
         </div>
       </article>
     </div>

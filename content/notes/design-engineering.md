@@ -10,9 +10,9 @@ draft: false
 
 > A living document: notes and resources on design engineering
 
-I only started coding more intentionally after returning from my 5 months Sabbatical. I bought a Claude Pro subscription and started vibe-coding,  which got me building personal projects as well as also starting New Standard.
+I only started coding more intentionally after returning from my 5 months travels from Japan and Korea. I bought a new MBP M5 and a Claude Pro subscription started vibe-coding,  which got me building personal projects as well as also starting New Standard.
 
-At New Standard, I worked on back-of-frontend and interactions to build custom sites on WebFlow and NextJS. On the side, I also work on indie apps for fun to get myself exposed to creating agentic interfaces & workflows to satisfy my own curiosity.
+At New Standard, I worked on back-of-frontend and interactions to build custom sites on WebFlow and NextJS. On the side, I also work on indie apps for fun to get myself exposed to creating agentic interfaces & custom workflows to satisfy my own curiosity.
 
 -------
 
