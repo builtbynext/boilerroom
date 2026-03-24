@@ -1,5 +1,5 @@
 ---
-title: Design Engineering
+title: '[WIP] Design Engineering'
 date: 2026-03-22
 slug: design-engineering
 kind: Note
@@ -44,7 +44,7 @@ At New Standard, I worked on back-of-frontend and interactions to build custom s
 
 ## Courses I've purchased
 
-- [UI Engineering 101 for Designers](https://maven.com/pixeljanitor/uiengineering-101-for-designers) - by [Mariana Castilho](https://x.com/mrncst?lang=en) and [Derek Briggs](https://x.com/PixelJanitor), I took this in November of 2024
+- [UI Engineering 101 for Designers](https://maven.com/pixeljanitor/uiengineering-101-for-designers) - by [Mariana Castilho](https://x.com/mrncst?lang=en) and [Derek Briggs](https://x.com/PixelJanitor)
 - [animations.dev](https://animations.dev/) - by [Emil Kowlalski](https://x.com/emilkowalski)
 - [Devouring Details](https://devouringdetails.com/) - by [Rauno Freiburg](https://rauno.me/)
 - [Interface Craft](https://www.interfacecraft.dev/) - by [Josh Puckett](https://x.com/joshpuckett)
@@ -69,13 +69,13 @@ At New Standard, I worked on back-of-frontend and interactions to build custom s
 - [Becoming a Design Engineer](https://marcel.io/posts/becoming-a-design-engineer) - Marcel Wichmann
 - [Design Engineering - a State of Mind](https://blog.designeng.club/p/design-engineering-a-state-of-mind) - Andy Zhang
 
-## People I admire
+## Designers I admire
 
 > Designers, engineers, and design engineers
 
-- [Andy Allen](https://x.com/asallen)
 - [Cory Watilo](https://watilo.com/)
 - [Daniel Petho](https://www.danielpetho.com/)
+- [Flora Guo](https://www.floguo.com/)
 - [Emil Kowalski](https://emilkowal.ski/)
 - [Henry Heffernan](https://x.com/henryheffernan)
 - [James Clements](https://x.com/jamesvclements)

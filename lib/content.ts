@@ -142,6 +142,7 @@ function getBookStatus(data: FrontmatterRecord): BookStatus {
 }
 
 function isPublished<T extends { draft: boolean }>(entry: T) {
+  if (process.env.NODE_ENV !== "production") return true
   return !entry.draft
 }
 
