@@ -46,27 +46,25 @@ export default async function BookshelfPage({
 
   const allBooks = await getBooks()
 
-  if (allBooks.length === 0) {
-    notFound()
-  }
-
   const defaultBook =
     allBooks.find((b) => b.status === "reading") ?? allBooks[0]
-  const targetSlug = activeSlug ?? defaultBook.slug
-  const book = await getBook(targetSlug)
+  const targetSlug = activeSlug ?? defaultBook?.slug
+  const book = targetSlug ? await getBook(targetSlug) : null
 
-  if (!book) {
+  if (targetSlug && !book) {
     notFound()
   }
 
-  const html = await renderMarkdown(book.body)
+  const html = book ? await renderMarkdown(book.body) : undefined
   const footer = <SiteFooter />
 
-  const dateMeta = book.finishedAt
-    ? `Finished ${formatDisplayDate(book.finishedAt)}`
-    : book.startedAt
-      ? `Started ${formatDisplayDate(book.startedAt)}`
-      : book.status.replace("-", " ")
+  const dateMeta = book
+    ? book.finishedAt
+      ? `Finished ${formatDisplayDate(book.finishedAt)}`
+      : book.startedAt
+        ? `Started ${formatDisplayDate(book.startedAt)}`
+        : book.status.replace("-", " ")
+    : undefined
 
   return (
     <MasterDetailLayout
@@ -80,12 +78,16 @@ export default async function BookshelfPage({
       }))}
       activeSlug={targetSlug}
       initialHtml={html}
-      activeEntry={{
-        title: book.title,
-        date: dateMeta,
-        subtitle: `${book.author}, ${book.year}`,
-        coverImage: book.coverImage,
-      }}
+      activeEntry={
+        book
+          ? {
+              title: book.title,
+              date: dateMeta!,
+              subtitle: `${book.author}, ${book.year}`,
+              coverImage: book.coverImage,
+            }
+          : undefined
+      }
       footer={footer}
     />
   )

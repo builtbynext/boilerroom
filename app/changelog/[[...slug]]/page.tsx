@@ -46,18 +46,14 @@ export default async function ChangelogPage({
 
   const allEntries = await getChangelogEntries()
 
-  if (allEntries.length === 0) {
+  const targetSlug = activeSlug ?? allEntries[0]?.slug
+  const entry = targetSlug ? await getChangelogEntry(targetSlug) : null
+
+  if (targetSlug && !entry) {
     notFound()
   }
 
-  const targetSlug = activeSlug ?? allEntries[0].slug
-  const entry = await getChangelogEntry(targetSlug)
-
-  if (!entry) {
-    notFound()
-  }
-
-  const html = await renderMarkdown(entry.body)
+  const html = entry ? await renderMarkdown(entry.body) : undefined
   const footer = <SiteFooter />
 
   return (
@@ -73,11 +69,15 @@ export default async function ChangelogPage({
       }))}
       activeSlug={targetSlug}
       initialHtml={html}
-      activeEntry={{
-        title: entry.title,
-        date: formatDisplayDate(entry.date),
-        excerpt: entry.excerpt,
-      }}
+      activeEntry={
+        entry
+          ? {
+              title: entry.title,
+              date: formatDisplayDate(entry.date),
+              excerpt: entry.excerpt,
+            }
+          : undefined
+      }
       footer={footer}
     />
   )

@@ -46,18 +46,14 @@ export default async function WritingPage({
 
   const allEntries = await getWritingEntries()
 
-  if (allEntries.length === 0) {
+  const targetSlug = activeSlug ?? allEntries[0]?.slug
+  const entry = targetSlug ? await getWritingEntry(targetSlug) : null
+
+  if (targetSlug && !entry) {
     notFound()
   }
 
-  const targetSlug = activeSlug ?? allEntries[0].slug
-  const entry = await getWritingEntry(targetSlug)
-
-  if (!entry) {
-    notFound()
-  }
-
-  const html = await renderMarkdown(entry.body)
+  const html = entry ? await renderMarkdown(entry.body) : undefined
   const footer = <SiteFooter />
 
   return (
@@ -71,10 +67,11 @@ export default async function WritingPage({
       }))}
       activeSlug={targetSlug}
       initialHtml={html}
-      activeEntry={{
-        title: entry.title,
-        date: formatDisplayDate(entry.date),
-      }}
+      activeEntry={
+        entry
+          ? { title: entry.title, date: formatDisplayDate(entry.date) }
+          : undefined
+      }
       footer={footer}
     />
   )

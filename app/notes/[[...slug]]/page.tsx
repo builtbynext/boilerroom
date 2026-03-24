@@ -46,20 +46,16 @@ export default async function NotesPage({
 
   const allNotes = await getNotes()
 
-  if (allNotes.length === 0) {
-    notFound()
-  }
-
   // Default to pinned note first, otherwise latest
   const defaultNote = allNotes.find((n) => n.pinned) ?? allNotes[0]
-  const targetSlug = activeSlug ?? defaultNote.slug
-  const note = await getNote(targetSlug)
+  const targetSlug = activeSlug ?? defaultNote?.slug
+  const note = targetSlug ? await getNote(targetSlug) : null
 
-  if (!note) {
+  if (targetSlug && !note) {
     notFound()
   }
 
-  const html = await renderMarkdown(note.body)
+  const html = note ? await renderMarkdown(note.body) : undefined
   const footer = <SiteFooter />
 
   return (
@@ -74,10 +70,11 @@ export default async function NotesPage({
       }))}
       activeSlug={targetSlug}
       initialHtml={html}
-      activeEntry={{
-        title: note.title,
-        date: formatDisplayDate(note.date),
-      }}
+      activeEntry={
+        note
+          ? { title: note.title, date: formatDisplayDate(note.date) }
+          : undefined
+      }
       footer={footer}
     />
   )
