@@ -73,15 +73,22 @@ At New Standard, I worked on back-of-frontend and interactions to build custom s
 
 > Designers, engineers, and design engineers
 
-- [Cory Watilo](https://watilo.com/)
-- [Daniel Petho](https://www.danielpetho.com/)
-- [Flora Guo](https://www.floguo.com/)
-- [Emil Kowalski](https://emilkowal.ski/)
-- [Henry Heffernan](https://x.com/henryheffernan)
-- [James Clements](https://x.com/jamesvclements)
-- [Matt D. Smith](https://mds.is/)
-- [Mariana Castilho](https://x.com/mrncst?lang=en)
-- [Meng To](https://x.com/MengTo)
-- [Josh Puckett](https://joshpuckett.me/)
-- [Jordan Singer](https://ibuildmyideas.com/)
-- [Ryo Lu](https://ryo.lu/)
+- [Cameron Worboys](https://x.com/camworboys) – CashOS and role of Ai/Design System @ Config'25
+- [Cory Watilo](https://watilo.com/) – PostHog site made with so much care
+- [Daniel Petho](https://x.com/nonzeroexitcode) – Cool 3D effects without three.js 
+- [Evil Rabbit](https://x.com/evilrabbit_) – Cool IxD and visual taste from Vercel 
+- [Flora Guo](https://www.floguo.com/) – Starting a blog and Tokyo Design Forum!
+- [Emil Kowalski](https://emilkowal.ski/) – IxD and motion design on the web 
+- [Guilermo Rauch ](https://x.com/rauchg?lang=en)- CEO of Vercel
+- [Hannah Hearth](https://www.hannahhearth.com/) – Design Leadership in 2026
+- [Henry Heffernan](https://x.com/henryheffernan)  – Still one of the coolest portfolio site in 2026
+- [Henry Modisett](https://x.com/camworboys) – Building an impeccable design team in age of Ai
+- [Jason Yuan ](https://x.com/jasonyuan)– Ai with soul @ Dot
+- [James Clements](https://x.com/jamesvclements) – Inspiration behind NewStandard
+- [Kris Puckett](https://www.krispuckett.com/) – Inspiration behind BigSur
+- [Matt D. Smith](https://mds.is/) – ShiftNudge and learning what Harness/Intelligence layer is abt
+- [Mariana Castilho](https://x.com/mrncst?lang=en) – Learning how to become a Design Engineer 101
+- [Meng To](https://x.com/MengTo) – Venture building and always staying curious in age of Ai
+- [Josh Puckett](https://joshpuckett.me/) – Interface Craft and what uncommon care for design looks like
+- [Jordan Singer](https://ibuildmyideas.com/) – Diagram and what the future of Autonomous PM looks like 
+- [Ryo Lu](https://ryo.lu/) – RyOS
