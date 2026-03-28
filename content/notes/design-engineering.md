@@ -75,10 +75,10 @@ At New Standard, I worked on back-of-frontend and interactions to build custom s
 
 - [Cameron Worboys](https://x.com/camworboys) – CashOS and role of Ai/Design System @ Config'25
 - [Cory Watilo](https://watilo.com/) – PostHog site made with so much care
-- [Daniel Petho](https://x.com/nonzeroexitcode) – Cool 3D effects without three.js 
-- [Evil Rabbit](https://x.com/evilrabbit_) – Cool IxD and visual taste from Vercel 
+- [Daniel Petho](https://x.com/nonzeroexitcode) – Cool 3D effects without three.js
+- [Evil Rabbit](https://x.com/evilrabbit_) – Cool IxD and visual taste from Vercel
 - [Flora Guo](https://www.floguo.com/) – Starting a blog and Tokyo Design Forum!
-- [Emil Kowalski](https://emilkowal.ski/) – IxD and motion design on the web 
+- [Emil Kowalski](https://emilkowal.ski/) – IxD and motion design on the web
 - [Guilermo Rauch ](https://x.com/rauchg?lang=en)- CEO of Vercel
 - [Hannah Hearth](https://www.hannahhearth.com/) – Design Leadership in 2026
 - [Henry Heffernan](https://x.com/henryheffernan)  – Still one of the coolest portfolio site in 2026
@@ -87,8 +87,8 @@ At New Standard, I worked on back-of-frontend and interactions to build custom s
 - [James Clements](https://x.com/jamesvclements) – Inspiration behind NewStandard
 - [Kris Puckett](https://www.krispuckett.com/) – Inspiration behind BigSur
 - [Matt D. Smith](https://mds.is/) – ShiftNudge and learning what Harness/Intelligence layer is abt
-- [Mariana Castilho](https://x.com/mrncst?lang=en) – Learning how to become a Design Engineer 101
+- [Mariana Castilho](https://x.com/mrncst?lang=en) – UI Engineering 101
 - [Meng To](https://x.com/MengTo) – Venture building and always staying curious in age of Ai
 - [Josh Puckett](https://joshpuckett.me/) – Interface Craft and what uncommon care for design looks like
-- [Jordan Singer](https://ibuildmyideas.com/) – Diagram and what the future of Autonomous PM looks like 
+- [Jordan Singer](https://ibuildmyideas.com/) – Diagram and what the future of Autonomous PM looks like
 - [Ryo Lu](https://ryo.lu/) – RyOS
