@@ -1,7 +1,7 @@
 ---
-title: Is Design still relevant in 2026?
+title: Are designers still relevant in 2026?
 date: 2026-04-03
-slug: is-design-still-relevant
+slug: are-designers-still-relevant
 excerpt: TBD
 pinned: false
 draft: true
@@ -14,7 +14,6 @@ draft: true
 Love the emphasis on who owns what decisions, the openness towards working together as a team towards a solution. Mob vibe coding as a team isn't necessary a replacement for the design process but leveraging it as a strong tool to communicate our ideas better. Taking ownership of idea , evaluate it and test it by bringing expertise to the solution.
 
 -----
-
 
 That’s a great question, and one that’s getting louder as design tools become more accessible and AI closes the gap further. Here’s how I’d think about it:
 
