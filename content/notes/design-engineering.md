@@ -73,6 +73,7 @@ At New Standard, I worked on back-of-frontend and interactions to build custom s
 
 > Designers, engineers, and design engineers
 
+- [Alex Scheifer](https://www.youtube.com/watch?v=Ys_jHRm3x2I) – Spot on prediction for future of design and also incredibly inspiring to me
 - [Cameron Worboys](https://x.com/camworboys) – CashOS and role of Ai/Design System @ Config'25
 - [Cory Watilo](https://watilo.com/) – PostHog site made with so much care
 - [Daniel Petho](https://x.com/nonzeroexitcode) – Cool 3D effects without three.js
